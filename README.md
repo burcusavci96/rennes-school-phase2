@@ -1,16 +1,29 @@
-# React + Vite
+# Rennes School — Phase 2 (React)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project recreates the provided Figma UI using **React + Vite** with a **mobile-first** and responsive layout approach.
 
-Currently, two official plugins are available:
+## What is implemented so far
+- React project setup with Vite
+- Pages:
+  - `Dashboard` (`src/pages/Dashboard.jsx`)
+  - `Calendar` (`src/pages/Calendar.jsx`)
+- App layout structure:
+  - Sidebar + main content area (desktop layout)
+- Components:
+  - `WelcomeCard` component with a close (X) action
+    - Implemented using React state (`showWelcome`)
+- Dashboard UI sections (static UI for now):
+  - "Next course" list (cards)
+  - Events/News header (tabs)
+  - Event banners area (placeholders / images in progress)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Tech stack
+- React
+- Vite
+- CSS (no UI library)
+- Mobile-first responsive styling
 
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Run locally
+```bash
+npm install
+npm run dev
