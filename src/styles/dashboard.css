@@ -1,0 +1,294 @@
+/* ===== Dashboard layout (Phase 2) ===== */
+
+.appShell{
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  min-height: 100vh;
+  background: #F5F7FB;
+}
+
+.main{
+  padding: 22px 28px;
+}
+
+.topRow{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom: 18px;
+}
+
+.pageHeading{
+  display:flex;
+  align-items:center;
+  gap: 12px;
+}
+
+.avatarDot{
+  width: 38px;
+  height: 38px;
+  border-radius: 999px;
+  background: #E6E8F0;
+}
+
+.hello{
+  font-size: 12px;
+  color:#667085;
+  line-height: 1;
+}
+.name{
+  font-size: 18px;
+  font-weight: 900;
+  line-height: 1.1;
+}
+
+.topIcons{
+  display:flex;
+  gap: 10px;
+}
+
+.iconSquare{
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  border: 1px solid rgba(230,232,240,0.9);
+  background: #fff;
+}
+
+.dashGrid{
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
+  padding: 18px;
+  display: grid;
+  grid-template-columns: 320px 1fr 320px;
+  gap: 18px;
+  min-height: 560px;
+}
+
+/* Left column */
+.panelTitle{
+  font-size: 12px;
+  font-weight: 800;
+  margin: 10px 0 10px;
+  color: #111827;
+}
+
+.courseList{
+  display:flex;
+  flex-direction:column;
+  gap: 12px;
+}
+
+.courseCard{
+  display:flex;
+  gap: 12px;
+  padding: 12px;
+  border-radius: 14px;
+  background: #fff;
+  border: 1px solid #EEF2F7;
+  box-shadow: 0 10px 18px rgba(15, 23, 42, 0.06);
+}
+
+.datePill{
+  width: 56px;
+  border-radius: 12px;
+  padding: 10px 0;
+  text-align:center;
+}
+.datePill--pink{ background:#F9E7F3; }
+.datePill--blue{ background:#E8F3FF; }
+.datePill--green{ background:#E8F6EE; }
+
+.dateDay{
+  font-size: 11px;
+  color:#667085;
+  line-height: 1;
+}
+.dateNum{
+  font-size: 20px;
+  font-weight: 900;
+  margin-top: 4px;
+  color:#111827;
+}
+
+.courseInfo{ flex:1; }
+.courseTop{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap: 10px;
+}
+.courseName{
+  font-size: 13px;
+  font-weight: 900;
+  color:#111827;
+}
+.courseDur{
+  font-size: 12px;
+  color:#98A2B3;
+  white-space:nowrap;
+}
+.courseMeta{
+  font-size: 12px;
+  color:#0B9BE4;
+  margin-top: 4px;
+}
+.courseTime{
+  font-size: 12px;
+  color:#667085;
+  margin-top: 6px;
+}
+
+.dividerLabel{
+  text-align:center;
+  color:#98A2B3;
+  font-size: 12px;
+  margin: 16px 0;
+}
+
+/* Middle column */
+.tabsRow{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin: 6px 0 12px;
+}
+
+.tabs{ display:flex; gap: 14px; }
+.tab{
+  background: transparent;
+  border: 0;
+  font-weight: 900;
+  font-size: 12px;
+  color:#98A2B3;
+  padding: 6px 0;
+  cursor:pointer;
+}
+.tab--active{
+  color:#111827;
+  border-bottom: 2px solid #0B9BE4;
+}
+
+.seeAll{
+  font-size: 12px;
+  font-weight: 800;
+  color:#0B9BE4;
+  text-decoration:none;
+}
+
+.bannerStack{
+  display:flex;
+  flex-direction:column;
+  gap: 14px;
+}
+
+.bannerCard{
+  height: 140px;
+  border-radius: 16px;
+  background: #E6E8F0;
+  overflow:hidden;
+}
+
+/* Right column – Welcome */
+.card.cardPad{
+  padding: 16px;
+}
+
+.welcomeTop{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap: 12px;
+}
+
+.welcomeTitle{
+  font-weight: 900;
+  font-size: 13px;
+  color:#111827;
+}
+
+.welcomeText{
+  margin: 10px 0 0;
+  color: #667085;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.pillRow{
+  margin-top: 10px;
+  display:flex;
+  gap: 8px;
+  flex-wrap:wrap;
+}
+
+.pill{
+  border: 1px solid #E6E8F0;
+  border-radius: 10px;
+  padding: 7px 10px;
+  font-size: 12px;
+  color:#667085;
+  background:#fff;
+}
+
+/* Close button */
+.closeBtn{
+  width: 28px;
+  height: 28px;
+  border-radius: 10px;
+  border: 1px solid rgba(230,232,240,0.9);
+  background: #fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+}
+
+.closeBtn:hover{ background:#F2F4F7; }
+
+/* Responsive */
+@media (max-width: 1100px){
+  .dashGrid{ grid-template-columns: 1fr; }
+}
+
+/* ===== Banners (image crop + overlay text) ===== */
+
+.bannerCard{
+  position: relative;
+  height: 140px;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #E6E8F0;
+}
+
+.bannerImg{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;      /* CROP burada */
+  object-position: center;
+  display: block;
+}
+
+.bannerOverlay{
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  padding: 18px;
+  background: linear-gradient(
+    90deg,
+    rgba(0,0,0,0.45) 0%,
+    rgba(0,0,0,0.25) 45%,
+    rgba(0,0,0,0.00) 80%
+  );
+}
+
+.bannerTitle{
+  max-width: 420px;
+  color: #fff;
+  font-family: "Bebas", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  font-size: 16px;
+  letter-spacing: 0px;
+  line-height: 20px;
+}
+

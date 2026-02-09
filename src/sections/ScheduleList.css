@@ -1,0 +1,239 @@
+/* =========================
+   BASE (desktop)
+========================= */
+.scheduleWrap { padding: 4px; }
+
+.title{
+  font-size: 22px;
+  font-weight: 900;
+  margin: 6px 0 12px;
+  color:#111827;
+}
+
+.domainTitle{
+  text-align:center;
+  color:#9aa3b2;
+  font-weight: 900;
+  margin: 20px 0 17px;
+}
+
+.list{
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+}
+
+.scheduleCard{
+  display:grid;
+  grid-template-columns: 68px 1fr 46px;
+  gap: 10px;
+  padding: 12px;
+  border-radius: 18px;
+  background:#fff;
+  border:1px solid #eef0f4;
+  box-shadow: 0 10px 30px rgba(16,24,40,.06);
+  align-items:start;
+}
+
+.dateBox{
+  width:74px;
+  height:74px;
+  border-radius:16px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  font-weight:900;
+}
+
+.day{ font-size:12px; opacity:.85; }
+.date{ font-size:26px; line-height:1; }
+
+.dateBox.pink{ background:#f7e3ef; color:#7a2b57; }
+.dateBox.blue{ background:#dff2f7; color:#0c6f86; }
+.dateBox.green{ background:#e6f4ef; color:#0b6b4b; }
+
+.info{ min-width:0; }
+
+.course{
+  font-weight:800;
+  font-size:15px;
+  margin-bottom:6px;
+  color:#111827;
+}
+
+.meta{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  margin-bottom:10px;
+}
+
+.meta span{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  padding:5px 9px;
+  border-radius:10px;
+  background:#f3f5f8;
+  color:#006780;
+  font-weight:600;
+  font-size:11px;
+}
+
+.meta img{ width:14px; height:14px; }
+
+.duration{
+  justify-self:end;
+  color:#9aa3b2;
+  font-weight:700;
+  font-size:12px;
+  margin-top:2px;
+}
+
+.timeOneLine{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:5px 9px;
+  border-radius:10px;
+  background:#f3f5f8;
+  font-weight:600;
+  color:#58595c;
+  font-size:10px;
+}
+
+.timeOneLine img{
+  width:14px;
+  height:14px;
+  opacity:.9;
+}
+
+
+/* =========================
+   MOBILE (<=768px)
+========================= */
+@media (max-width: 768px){
+
+  /* Figma’da “Next course” yazmıyor */
+  .scheduleWrap .title{
+    display:none !important;
+  }
+
+  /* Domain/Demain kısmı mobilde yok */
+  .scheduleWrap .domainTitle,
+  .scheduleWrap .list:nth-of-type(2){
+    display:none !important;
+  }
+
+  /* Next course: sadece ilk kart kalsın */
+  .scheduleWrap .list:first-of-type .scheduleCard:nth-child(n+2){
+    display:none !important;
+  }
+
+  /* Kart layout: kompakt + figma’ya yakın */
+  .scheduleWrap{ padding: 0; }
+
+  .scheduleCard{
+    position: relative;
+    grid-template-columns: 76px 1fr;
+    grid-template-areas:
+      "date info"
+      "date time";
+    padding: 12px;
+    column-gap: 10px;
+    row-gap: 8px;           /* önemli: kartı kısaltır */
+    align-items: start;
+  }
+
+  .dateBox{
+    grid-area: date;
+    width: 76px;
+    height: 76px;
+    border-radius: 18px;
+  }
+
+  .info{ grid-area: info; }
+
+  .course{
+    font-size: 17px;
+    font-weight: 800;
+    margin-bottom: 6px;
+  }
+
+  .meta{
+    margin-bottom: 8px;
+    gap: 8px;
+  }
+
+  .meta span{
+    font-size: 13px;
+    padding: 6px 10px;
+    border-radius: 12px;
+  }
+
+  .timeOneLine{
+    grid-area: time;
+    justify-self: start;
+    padding: 6px 10px;
+    border-radius: 12px;
+    font-size: 13px;
+    color:#111827;
+  }
+
+  /* sağ üst 2h */
+  .duration{
+    position: absolute;
+    right: 14px;
+    top: 12px;
+    margin: 0;
+    font-size:12px;
+    font-weight:700;
+  }
+}
+
+/* ===== EXTRA SMALL (<=360px) - Mobile S / 320px ===== */
+@media (max-width: 360px){
+
+  .scheduleCard{
+    grid-template-columns: 70px 1fr;
+    padding: 10px;
+    column-gap: 8px;
+    row-gap: 6px;
+  }
+
+  .dateBox{
+    width: 70px;
+    height: 70px;
+  }
+
+  .course{
+    font-size: 16px;
+    margin-bottom: 5px;
+  }
+
+  .meta{
+    margin-bottom: 6px;
+    gap: 6px;
+  }
+
+  .meta span{
+    font-size: 12px;
+    padding: 5px 8px;
+    border-radius: 10px;
+  }
+
+  .timeOneLine{
+    font-size: 12px;
+    padding: 5px 8px;
+    border-radius: 10px;
+  }
+
+  .duration{
+    right: 12px;
+    top: 10px;
+    font-size: 13px;
+     font-size:11px;
+    font-weight:600;
+  }
+}

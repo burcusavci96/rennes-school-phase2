@@ -1,0 +1,99 @@
+.welcome{
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: #fff;
+  padding: 14px;
+}
+
+.welcomeTop{
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.welcomeTop h3{
+  margin: 0;
+  font-size: 14px;
+  font-weight: 900;
+  line-height: 1.25;
+}
+
+.close{
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+}
+
+.welcome p{
+  margin: 10px 0 12px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.welcomeBtns{
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.pill{
+  border: 1px solid var(--border);
+  background: #fafafa;
+  border-radius: 999px;
+  padding: 8px 12px;
+  font-weight: 900;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+/* ===== EXTRA SMALL (<=360px) - Welcome ===== */
+@media (max-width: 360px){
+  .welcome{
+    padding: 12px;
+  }
+
+  .welcomeTop h3{
+    font-size: 13px;
+    line-height: 1.2;
+  }
+
+  .welcome p{
+    margin: 8px 0 10px;
+    font-size: 11px;
+    line-height: 1.35;
+  }
+
+  .welcomeBtns{
+    gap: 8px;
+  }
+
+  .pill{
+    padding: 7px 10px;
+    font-size: 11px;
+    font-weight: 800;
+  }
+}
+
+/* Re-open butonu: figma'ya daha yakın, küçük pill */
+.welcomeReopen{
+  width: fit-content;
+  border: 1px solid var(--border);
+  background: #fff;
+  border-radius: 999px;
+  padding: 8px 12px;
+  font-weight: 800;
+  font-size: 12px;
+  color: #111827;
+  cursor: pointer;
+}
+
+.welcomeReopen:hover{
+  background: #fafafa;
+}
+
+.welcomeReopen{
+  margin: 0 auto;  /* ortalar */
+  display: block;
+}

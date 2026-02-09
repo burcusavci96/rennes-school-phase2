@@ -1,0 +1,167 @@
+.sidebar {
+  width: 90px;
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  background: #fff;
+  border-right: 1px solid #e5e7eb;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 8px;
+}
+
+.brand {
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.brandLogo {
+  width: 44px;
+  height: 44px;
+  object-fit: contain;
+}
+
+.nav {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 8px;
+}
+
+.navItem {
+  width: 100%;
+  border-radius: 16px;
+  padding: 12px 6px;
+  text-decoration: none;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+
+  border: 0;
+  outline: 0;
+  background: transparent;
+  cursor: pointer;
+
+  color: #9aa3b2;
+}
+
+.navItem.active {
+  background: #f5f6ff;
+  color: #0d1333;
+}
+
+.navIcon {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+}
+
+.navText {
+  font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  font-size: 10px;
+  line-height: 20px;
+  font-weight: 500;
+  letter-spacing: 0.25px;
+  text-align: center;
+  color: inherit;
+}
+
+.logoutBtn {
+  margin-top: auto;
+  width: 100%;
+  border: 0;
+  background: transparent;
+  color: #9aa3b2;
+  border-radius: 16px;
+  padding: 12px 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.logoutBtn:hover {
+  background: #fafafa;
+  color: #111827;
+}
+
+.navItem:focus,
+.navItem:focus-visible {
+  outline: none;
+  box-shadow: none;
+}
+
+.navItem.active .navIcon {
+  filter: brightness(1.15) contrast(1.15);
+}
+
+/* Mobile bottom tabbar */
+@media (max-width: 768px) {
+  .sidebar {
+    position: fixed;
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+    top: auto;
+
+    width: auto;
+    height: 90px;
+
+    border-right: 0;
+    border-top: 1px solid #e5e7eb;
+    border-radius: 22px;
+
+    z-index: 50;
+    flex-direction: row;
+    align-items: center;
+    padding: 10px 12px;
+
+    box-shadow: 0 14px 40px rgba(15, 23, 42, 0.1);
+  }
+
+  .brand {
+    display: none;
+  }
+
+  .logoutBtn {
+    display: none;
+  }
+
+  .nav {
+    margin-top: 0;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .navItem {
+    flex: 1;
+    width: auto;
+    padding: 10px 8px;
+    border-radius: 18px;
+  }
+
+  .navIcon {
+    width: 24px;
+    height: 24px;
+  }
+
+  .navText {
+    font-size: 12px;
+    font-weight: 400;
+  }
+
+  .navItem.active .navText {
+    font-weight: 600;
+  }
+}

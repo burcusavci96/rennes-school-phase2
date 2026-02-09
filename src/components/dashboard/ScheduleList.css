@@ -1,0 +1,60 @@
+.scheduleBlock { min-width: 0; }
+
+.blockTitle {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text);
+  margin: 6px 0 12px;
+}
+
+.blockStack {
+  display: grid;
+  gap: 12px;
+}
+
+.dividerLabel {
+  margin: 18px 0 12px;
+  font-size: 12px;
+  color: var(--muted);
+  text-align: center;
+}
+
+.schCard {
+  display: grid;
+  grid-template-columns: 62px 1fr auto;
+  gap: 12px;
+  align-items: center;
+  padding: 12px;
+  border-radius: 16px;
+  background: #fbfbfd;
+  border: 1px solid var(--border);
+}
+
+.schDate {
+  border-radius: 14px;
+  padding: 10px 0;
+  text-align: center;
+  border: 1px solid var(--border);
+  background: #fff;
+}
+
+.schDate.pink { background: #ffeef5; }
+.schDate.blue { background: #eef4ff; }
+.schDate.green { background: #eefbf4; }
+
+.schDay { font-size: 12px; color: var(--muted); }
+.schNum { font-size: 18px; font-weight: 800; color: var(--text); }
+
+.schInfo { min-width: 0; }
+.schTitle { font-weight: 700; margin-bottom: 6px; }
+.schMeta {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  color: var(--muted);
+  font-size: 12px;
+  flex-wrap: wrap;
+}
+.schTime { margin-top: 6px; font-size: 12px; color: var(--muted); }
+
+.schDur { color: var(--muted); font-size: 12px; }

@@ -1,0 +1,86 @@
+.eventsWrap {
+  min-width: 0;
+}
+
+.eventsTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 4px 0 12px;
+}
+
+.tabs {
+  display: flex;
+  gap: 18px;
+}
+
+.tab {
+  border: 0;
+  background: transparent;
+  font-weight: 800;
+  color: var(--muted);
+  cursor: pointer;
+  padding: 6px 0;
+  border-bottom: 2px solid transparent;
+}
+
+.tab.active {
+  color: var(--text);
+  border-bottom-color: #3b82f6;
+}
+
+.seeAll {
+  border: 0;
+  background: transparent;
+  color: #3b82f6;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.eventsList {
+  display: grid;
+  gap: 16px;
+}
+
+/* Banner kart */
+.eventCard {
+  position: relative;
+  height: 170px;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: #f3f4f6;
+}
+
+.eventImage {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #d1d5db, #f9fafb);
+  transform: scale(1.02);
+}
+
+.eventGradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(0,0,0,0.55) 0%,
+    rgba(0,0,0,0.15) 45%,
+    rgba(0,0,0,0.0) 70%
+  );
+}
+
+.eventInner {
+  position: absolute;
+  left: 18px;
+  bottom: 18px;
+  right: 18px;
+  color: #fff;
+}
+
+.eventTitle {
+  font-weight: 900;
+  font-size: 18px;
+  line-height: 1.15;
+  max-width: 420px;
+}

@@ -1,0 +1,43 @@
+.appShell {
+  display: grid;
+  grid-template-columns: 90px 1fr;
+  min-height: 100vh;
+}
+
+/* Keep scrolling inside content area when using CSS Grid */
+.appMain {
+  display: grid;
+  grid-template-rows: 72px minmax(0, 1fr);
+  min-height: 100vh;
+}
+
+/* Make the grid child shrinkable and let it handle the page scroll */
+.content {
+  padding: 20px;
+  background: #f6f7fb;
+  min-height: 0;
+  overflow: auto;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .appShell {
+    display: block;
+  }
+
+  .appMain {
+    width: 100%;
+    min-height: 100vh;
+    display: block;
+  }
+
+  .content {
+    padding-bottom: 110px;
+    overflow: visible;
+    min-height: auto;
+  }
+
+  body.hideHeaderOnScheduleMobile .appMain > .header {
+    display: none;
+  }
+}
