@@ -7,7 +7,12 @@
 }
 
 *{ box-sizing: border-box; }
-html,body{ height:100%; margin:0; }
+
+html, body{
+  height: 100%;
+  margin: 0;
+}
+
 body{
   font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
   background: var(--bg);
@@ -21,7 +26,7 @@ body{
 }
 
 .sidebar{
-  display: none; /* mobile */
+  display: none;
   background: var(--card);
   border-right: 1px solid var(--border);
   padding: 16px;
@@ -29,7 +34,7 @@ body{
 
 .main{
   padding: 16px;
-  padding-bottom: 84px; /* tabbar boşluğu */
+  padding-bottom: 84px;
 }
 
 .topbar{
@@ -78,11 +83,15 @@ body{
   font-size: 16px;
 }
 
-.muted{ color: var(--muted); margin: 0; }
+.muted{
+  color: var(--muted);
+  margin: 0;
+}
 
 .sidebar__brand{
   margin-bottom: 24px;
 }
+
 .sidebar__logo{
   width: 120px;
   height: auto;
@@ -149,39 +158,21 @@ body{
   background: #eef2ff;
 }
 
-/* Tablet/Desktop */
 @media (min-width: 1024px){
   .appShell{
     grid-template-columns: 280px 1fr;
   }
-  .sidebar{ display: block; }
-  .tabbar{ display: none; }
-  .main{ padding: 24px; }
 
+  .sidebar{
+    display: block;
+  }
 
-}
+  .tabbar{
+    display: none;
+  }
 
-
-:root{
-  --bg:#f6f7fb; --card:#fff; --text:#0f172a; --muted:#64748b; --border:#e5e7eb;
-}
-*{box-sizing:border-box}
-html,body{height:100%;margin:0}
-body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--text)}
-
-.appShell{min-height:100vh;display:grid;grid-template-columns:1fr}
-.sidebar{display:none;background:var(--card);border-right:1px solid var(--border);padding:16px}
-.main{padding:16px;padding-bottom:84px}
-.pageTitle{margin:0 0 16px 0;font-size:18px}
-.card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:16px}
-
-.tabbar{position:fixed;left:0;right:0;bottom:0;height:64px;background:var(--card);border-top:1px solid var(--border);display:grid;grid-template-columns:repeat(2,1fr);gap:8px;align-items:center;padding:0 12px}
-.tabItem{text-decoration:none;text-align:center;padding:10px 12px;border-radius:12px;border:1px solid var(--border);color:var(--text);font-size:14px}
-.tabItem.active{border-color:#c7d2fe;background:#eef2ff}
-
-@media (min-width:1024px){
-  .appShell{grid-template-columns:280px 1fr}
-  .sidebar{display:block}
-  .tabbar{display:none}
-  .main{padding:24px}
+  .main{
+    padding: 24px;
+    padding-bottom: 24px;
+  }
 }

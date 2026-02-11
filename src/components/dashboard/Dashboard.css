@@ -1,32 +1,50 @@
-.dashboard {
+/* =========================
+   Dashboard layout (Phase 2)
+   - Desktop: 3 columns
+   - Tablet: 2 columns + right panel full width
+   - Mobile: stacked (left -> right -> mid)
+   ========================= */
+
+.dashboard{
   background: #fff;
   border-radius: 22px;
   padding: 18px;
+
   display: grid;
   grid-template-columns: 340px minmax(520px, 1fr) 320px;
   gap: 18px;
   align-items: start;
 }
 
+/* Prevent grid children from overflowing */
+.dashboard > *{ min-width: 0; }
 
-.dashboard > * {
-  min-width: 0;
-}
+/* Desktop: map columns (optional but clearer) */
+.col-left{ grid-column: 1; }
+.col-mid{ grid-column: 2; }
+.col-right{ grid-column: 3; }
 
-
-
-/* tablet */
-@media (max-width: 1100px) {
-  .dashboard {
+/* =========================
+   Tablet
+   ========================= */
+@media (max-width: 1100px){
+  .dashboard{
     grid-template-columns: 340px 1fr;
     grid-template-areas:
       "left mid"
       "right right";
   }
+
+  .col-left{ grid-area: left; }
+  .col-mid{ grid-area: mid; }
+  .col-right{ grid-area: right; }
 }
 
-@media (max-width: 760px) {
-  .dashboard {
+/* =========================
+   Mobile
+   ========================= */
+@media (max-width: 760px){
+  .dashboard{
     grid-template-columns: 1fr;
     grid-template-areas:
       "left"
@@ -36,17 +54,15 @@
     gap: 14px;
   }
 
-  .col-left  { grid-area: left; }
-  .col-right { grid-area: right; }
-  .col-mid   { grid-area: mid; }
+  .col-left{ grid-area: left; }
+  .col-mid{ grid-area: mid; }
+  .col-right{ grid-area: right; }
 }
-ol-mid   { grid-area: mid; }
 
-
+/* Very small phones */
 @media (max-width: 360px){
   .dashboard{
     padding: 10px;
     gap: 12px;
   }
 }
-

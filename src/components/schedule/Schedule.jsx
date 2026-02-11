@@ -5,8 +5,18 @@ import { scheduleItems } from "../../data/schedule";
 
 const DOW = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
 const MONTH_NAMES = [
-  "January","February","March","April","May","June",
-  "July","August","September","October","November","December"
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
 ];
 
 function useNow(tickMs = 30000) {
@@ -18,7 +28,6 @@ function useNow(tickMs = 30000) {
   return now;
 }
 
-// ---------- helpers ----------
 function clamp(n, min, max) {
   return Math.min(max, Math.max(min, n));
 }
@@ -96,11 +105,6 @@ function formatWeekRange(startDate) {
   return `${startPart} - ${endPart}`;
 }
 
-/**
- * Mobile default:
- * - weekday => today
- * - weekend => next Monday
- */
 function getMobileDefaultDate() {
   const t = new Date();
   t.setHours(0, 0, 0, 0);
@@ -136,7 +140,6 @@ function useIsMobile(breakpoint = 768) {
   return isMobile;
 }
 
-// ---------- UI pieces ----------
 function ViewTabs({ view, onChange }) {
   return (
     <div className="schedViewTabs" role="tablist" aria-label="Schedule view">
@@ -165,17 +168,12 @@ function ViewTabs({ view, onChange }) {
   );
 }
 
-/**
- * MONTH GRID (Monday-first)
- */
 function MonthGrid({ cursorDate, selectedDate, onPickDate, events }) {
   const y = cursorDate.getFullYear();
   const m = cursorDate.getMonth();
 
   const daysInMonth = new Date(y, m + 1, 0).getDate();
 
-  // JS getDay(): 0=Sun ... 6=Sat
-  // Convert to Monday-first index: Mon=0 ... Sun=6
   const firstDowSundayFirst = new Date(y, m, 1).getDay();
   const firstDowMondayFirst = (firstDowSundayFirst + 6) % 7;
 
@@ -192,13 +190,25 @@ function MonthGrid({ cursorDate, selectedDate, onPickDate, events }) {
   for (let d = 1; d <= daysInMonth; d++) {
     const date = new Date(y, m, d);
     date.setHours(0, 0, 0, 0);
-    cells.push({ kind: "day", date, iso: toLocalISO(date), muted: false, key: `c-${d}` });
+    cells.push({
+      kind: "day",
+      date,
+      iso: toLocalISO(date),
+      muted: false,
+      key: `c-${d}`,
+    });
   }
 
   for (let d = 1; d <= trailing; d++) {
     const date = new Date(y, m + 1, d);
     date.setHours(0, 0, 0, 0);
-    cells.push({ kind: "day", date, iso: toLocalISO(date), muted: true, key: `n-${d}` });
+    cells.push({
+      kind: "day",
+      date,
+      iso: toLocalISO(date),
+      muted: true,
+      key: `n-${d}`,
+    });
   }
 
   const eventsByIso = useMemo(() => {
@@ -215,13 +225,16 @@ function MonthGrid({ cursorDate, selectedDate, onPickDate, events }) {
     <div className="monthWrap">
       <div className="monthDowRow">
         {DOW.map((d) => (
-          <div key={d} className="monthDowCell">{d}</div>
+          <div key={d} className="monthDowCell">
+            {d}
+          </div>
         ))}
       </div>
 
       <div className="monthGrid">
         {cells.map((c) => {
-          if (c.kind === "empty") return <div key={c.key} className="monthDay muted" aria-hidden="true" />;
+          if (c.kind === "empty")
+            return <div key={c.key} className="monthDay muted" aria-hidden="true" />;
 
           const dayEvents = eventsByIso.get(c.iso) || [];
           const shown = dayEvents.slice(0, 2);
@@ -235,7 +248,9 @@ function MonthGrid({ cursorDate, selectedDate, onPickDate, events }) {
                 "monthDay",
                 c.muted ? "muted" : "",
                 sameDay(c.date, selectedDate) ? "active" : "",
-              ].join(" ").trim()}
+              ]
+                .join(" ")
+                .trim()}
               onClick={() => onPickDate(c.date)}
             >
               <div className="monthDayTop">
@@ -249,7 +264,9 @@ function MonthGrid({ cursorDate, selectedDate, onPickDate, events }) {
                     className={e.cancelled ? "monthItem cancelled" : "monthItem"}
                     title={`${e.title} ${e.start}–${e.end}`}
                   >
-                    <div className="monthItemTime">{e.start}–{e.end}</div>
+                    <div className="monthItemTime">
+                      {e.start}–{e.end}
+                    </div>
                     <div className="monthItemTitle">{e.title}</div>
                   </div>
                 ))}
@@ -270,9 +287,6 @@ function MonthGrid({ cursorDate, selectedDate, onPickDate, events }) {
   );
 }
 
-/**
- * DESKTOP WEEK GRID
- */
 function WeekGrid({ weekStart, selectedDate, onSelectDate, onOpenDay, events, now }) {
   const START_HOUR = 9;
   const END_HOUR = 18;
@@ -309,9 +323,11 @@ function WeekGrid({ weekStart, selectedDate, onSelectDate, onOpenDay, events, no
             key={toLocalISO(d)}
             type="button"
             className={sameDay(d, selectedDate) ? "dayHead active" : "dayHead"}
-            onClick={() => { onSelectDate(d); onOpenDay?.(d); }}
+            onClick={() => {
+              onSelectDate(d);
+              onOpenDay?.(d);
+            }}
           >
-            {/* Map Sun-first getDay() into Mon-first labels */}
             <div className="dow">{DOW[(d.getDay() + 6) % 7]}</div>
             <div className="dom">{d.getDate()}</div>
           </button>
@@ -322,7 +338,11 @@ function WeekGrid({ weekStart, selectedDate, onSelectDate, onOpenDay, events, no
         <div className="timeCol" style={{ height: gridHeight }}>
           {hours.map((h) => {
             const top = (h - START_HOUR) * 60 * PX_PER_MIN;
-            return <div className="timeTick" key={h} style={{ top }}>{formatHourLabel(h)}</div>;
+            return (
+              <div className="timeTick" key={h} style={{ top }}>
+                {formatHourLabel(h)}
+              </div>
+            );
           })}
         </div>
 
@@ -354,12 +374,14 @@ function WeekGrid({ weekStart, selectedDate, onSelectDate, onOpenDay, events, no
                   return (
                     <div
                       key={e.id}
-                      className={["wkEvent", e.cancelled ? "cancelled" : "", compact ? "compact" : ""].join(" ").trim()}
+                      className={["wkEvent", e.cancelled ? "cancelled" : "", compact ? "compact" : ""]
+                        .join(" ")
+                        .trim()}
                       style={{ top, height }}
                     >
                       <div className="wkTop">
                         <div className="wkTitle">{e.title}</div>
-                        <div className="wkDur">{e.duration}</div>
+                        {!e.cancelled && <div className="wkDur">{e.duration}</div>}
                       </div>
 
                       <div className="wkBadges">
@@ -367,7 +389,9 @@ function WeekGrid({ weekStart, selectedDate, onSelectDate, onOpenDay, events, no
                         <span className="wkBadge">{e.room}</span>
                       </div>
 
-                      <div className="wkTime">{e.start} → {e.end}</div>
+                      <div className="wkTime">
+                        {e.start} → {e.end}
+                      </div>
                       {e.cancelled && <span className="wkCancelled">Cancelled</span>}
                     </div>
                   );
@@ -381,9 +405,6 @@ function WeekGrid({ weekStart, selectedDate, onSelectDate, onOpenDay, events, no
   );
 }
 
-/**
- * MOBILE WEEK (timeline)
- */
 function WeekMobile({ selectedDate, onSelectDate, eventsOfSelectedDay, weekStart, now }) {
   const START_HOUR = 9;
   const END_HOUR = 18;
@@ -425,7 +446,11 @@ function WeekMobile({ selectedDate, onSelectDate, eventsOfSelectedDay, weekStart
         <div className="timeCol mTimeCol" style={{ height: gridHeight }}>
           {hours.map((h) => {
             const top = (h - START_HOUR) * 60 * PX_PER_MIN;
-            return <div className="timeTick" key={h} style={{ top }}>{formatHourLabel(h)}</div>;
+            return (
+              <div className="timeTick" key={h} style={{ top }}>
+                {formatHourLabel(h)}
+              </div>
+            );
           })}
         </div>
 
@@ -456,7 +481,7 @@ function WeekMobile({ selectedDate, onSelectDate, eventsOfSelectedDay, weekStart
                 >
                   <div className="wkTop">
                     <div className="wkTitle">{e.title}</div>
-                    <div className="wkDur">{e.duration}</div>
+                    {!e.cancelled && <div className="wkDur">{e.duration}</div>}
                   </div>
 
                   <div className="wkBadges">
@@ -464,7 +489,9 @@ function WeekMobile({ selectedDate, onSelectDate, eventsOfSelectedDay, weekStart
                     <span className="wkBadge">{e.room}</span>
                   </div>
 
-                  <div className="wkTime">{e.start} → {e.end}</div>
+                  <div className="wkTime">
+                    {e.start} → {e.end}
+                  </div>
                   {e.cancelled && <span className="wkCancelled">Cancelled</span>}
                 </div>
               );
@@ -482,9 +509,6 @@ function WeekMobile({ selectedDate, onSelectDate, eventsOfSelectedDay, weekStart
   );
 }
 
-/**
- * DESKTOP DAY GRID
- */
 function DayGrid({ date, events, now }) {
   const START_HOUR = 9;
   const END_HOUR = 18;
@@ -502,7 +526,9 @@ function DayGrid({ date, events, now }) {
 
   const dayEvents = useMemo(() => {
     const iso = toLocalISO(date);
-    return (events || []).filter((e) => e.dateIso === iso).sort((a, b) => a.startMin - b.startMin);
+    return (events || [])
+      .filter((e) => e.dateIso === iso)
+      .sort((a, b) => a.startMin - b.startMin);
   }, [date, events]);
 
   const nowMin = now.getHours() * 60 + now.getMinutes();
@@ -514,7 +540,11 @@ function DayGrid({ date, events, now }) {
         <div className="timeCol" style={{ height: gridHeight }}>
           {hours.map((h) => {
             const top = (h - START_HOUR) * 60 * PX_PER_MIN;
-            return <div className="timeTick" key={h} style={{ top }}>{formatHourLabel(h)}</div>;
+            return (
+              <div className="timeTick" key={h} style={{ top }}>
+                {formatHourLabel(h)}
+              </div>
+            );
           })}
         </div>
 
@@ -548,7 +578,7 @@ function DayGrid({ date, events, now }) {
                 >
                   <div className="wkTop">
                     <div className="wkTitle">{e.title}</div>
-                    <div className="wkDur">{e.duration}</div>
+                    {!e.cancelled && <div className="wkDur">{e.duration}</div>}
                   </div>
 
                   <div className="wkBadges">
@@ -556,7 +586,9 @@ function DayGrid({ date, events, now }) {
                     <span className="wkBadge">{e.room}</span>
                   </div>
 
-                  <div className="wkTime">{e.start} → {e.end}</div>
+                  <div className="wkTime">
+                    {e.start} → {e.end}
+                  </div>
                   {e.cancelled && <span className="wkCancelled">Cancelled</span>}
                 </div>
               );
@@ -568,7 +600,6 @@ function DayGrid({ date, events, now }) {
   );
 }
 
-// ---------- main ----------
 export default function Schedule() {
   const isMobile = useIsMobile(768);
   const [view, setView] = useState("week");
@@ -643,14 +674,18 @@ export default function Schedule() {
   const selectionEvents = useMemo(() => {
     if (view === "day") {
       const iso = toLocalISO(selectedDate);
-      return allEvents.filter((e) => e.dateIso === iso).sort((a, b) => a.startMin - b.startMin);
+      return allEvents
+        .filter((e) => e.dateIso === iso)
+        .sort((a, b) => a.startMin - b.startMin);
     }
     if (view === "week") {
       const startIso = toLocalISO(weekStart);
       const endIso = toLocalISO(addDays(weekStart, 7));
       return allEvents
         .filter((e) => e.dateIso >= startIso && e.dateIso < endIso)
-        .sort((a, b) => (a.dateIso === b.dateIso ? a.startMin - b.startMin : a.dateIso.localeCompare(b.dateIso)));
+        .sort((a, b) =>
+          a.dateIso === b.dateIso ? a.startMin - b.startMin : a.dateIso.localeCompare(b.dateIso)
+        );
     }
     const y = cursorDate.getFullYear();
     const m = cursorDate.getMonth();
@@ -658,7 +693,9 @@ export default function Schedule() {
     const nextMonthStartIso = toLocalISO(new Date(y, m + 1, 1));
     return allEvents
       .filter((e) => e.dateIso >= monthStartIso && e.dateIso < nextMonthStartIso)
-      .sort((a, b) => (a.dateIso === b.dateIso ? a.startMin - b.startMin : a.dateIso.localeCompare(b.dateIso)));
+      .sort((a, b) =>
+        a.dateIso === b.dateIso ? a.startMin - b.startMin : a.dateIso.localeCompare(b.dateIso)
+      );
   }, [allEvents, view, selectedDate, weekStart, cursorDate]);
 
   const eventsOfSelectedDay = useMemo(() => {
@@ -726,9 +763,15 @@ export default function Schedule() {
             <div className="schedMonth">{headerMonthLabel}</div>
 
             <div className="schedArrows">
-              <button className="schedNavBtn" type="button" onClick={goPrev} aria-label="Previous">‹</button>
-              <button className="schedTodayBtn" type="button" onClick={goToday}>Today</button>
-              <button className="schedNavBtn" type="button" onClick={goNext} aria-label="Next">›</button>
+              <button className="schedNavBtn" type="button" onClick={goPrev} aria-label="Previous">
+                ‹
+              </button>
+              <button className="schedTodayBtn" type="button" onClick={goToday}>
+                Today
+              </button>
+              <button className="schedNavBtn" type="button" onClick={goNext} aria-label="Next">
+                ›
+              </button>
             </div>
           </div>
 
@@ -741,9 +784,13 @@ export default function Schedule() {
 
       {view === "week" && isMobile && (
         <div className="mWeekHeader">
-          <button className="mWeekNav" type="button" onClick={goPrev} aria-label="Previous week">‹</button>
+          <button className="mWeekNav" type="button" onClick={goPrev} aria-label="Previous week">
+            ‹
+          </button>
           <div className="mWeekTitle">{MONTH_NAMES[cursorDate.getMonth()]}</div>
-          <button className="mWeekNav" type="button" onClick={goNext} aria-label="Next week">›</button>
+          <button className="mWeekNav" type="button" onClick={goNext} aria-label="Next week">
+            ›
+          </button>
         </div>
       )}
 
@@ -784,9 +831,7 @@ export default function Schedule() {
           />
         )}
 
-        {view === "day" && (
-          <DayGrid date={selectedDate} events={allEvents} now={now} />
-        )}
+        {view === "day" && <DayGrid date={selectedDate} events={allEvents} now={now} />}
 
         {view === "month" && (
           <MonthGrid

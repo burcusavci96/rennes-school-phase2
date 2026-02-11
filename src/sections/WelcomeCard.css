@@ -48,11 +48,9 @@
   cursor: pointer;
 }
 
-/* ===== EXTRA SMALL (<=360px) - Welcome ===== */
+/* Responsive */
 @media (max-width: 360px){
-  .welcome{
-    padding: 12px;
-  }
+  .welcome{ padding: 12px; }
 
   .welcomeTop h3{
     font-size: 13px;
@@ -65,9 +63,7 @@
     line-height: 1.35;
   }
 
-  .welcomeBtns{
-    gap: 8px;
-  }
+  .welcomeBtns{ gap: 8px; }
 
   .pill{
     padding: 7px 10px;
@@ -76,7 +72,7 @@
   }
 }
 
-/* Re-open butonu: figma'ya daha yakın, küçük pill */
+/* Reopen button */
 .welcomeReopen{
   width: fit-content;
   border: 1px solid var(--border);
@@ -87,13 +83,11 @@
   font-size: 12px;
   color: #111827;
   cursor: pointer;
+
+  margin: 0 auto;
+  display: block;
 }
 
 .welcomeReopen:hover{
   background: #fafafa;
-}
-
-.welcomeReopen{
-  margin: 0 auto;  /* ortalar */
-  display: block;
 }

@@ -4,7 +4,7 @@ import "./WelcomeCard.css";
 export default function WelcomeCard() {
   const [open, setOpen] = useState(true);
 
-  // Kapalıyken küçük bir buton göster (tekrar açılabilsin)
+  
   if (!open) {
     return (
       <button

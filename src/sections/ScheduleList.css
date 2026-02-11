@@ -1,10 +1,8 @@
-/* =========================
-   BASE (desktop)
-========================= */
+/* Base */
 .scheduleWrap { padding: 4px; }
 
 .title{
-  font-size: 22px;
+  font-size: 15px;
   font-weight: 900;
   margin: 6px 0 12px;
   color:#111827;
@@ -47,7 +45,7 @@
 }
 
 .day{ font-size:12px; opacity:.85; }
-.date{ font-size:26px; line-height:1; }
+.date{ font-size:20px; line-height:1; }
 
 .dateBox.pink{ background:#f7e3ef; color:#7a2b57; }
 .dateBox.blue{ background:#dff2f7; color:#0c6f86; }
@@ -57,7 +55,7 @@
 
 .course{
   font-weight:800;
-  font-size:15px;
+  font-size:14px;
   margin-bottom:6px;
   color:#111827;
 }
@@ -109,29 +107,19 @@
   opacity:.9;
 }
 
-
-/* =========================
-   MOBILE (<=768px)
-========================= */
+/* Responsive */
 @media (max-width: 768px){
+  .scheduleWrap .title{ display:none !important; }
 
-  /* Figma’da “Next course” yazmıyor */
-  .scheduleWrap .title{
-    display:none !important;
-  }
-
-  /* Domain/Demain kısmı mobilde yok */
   .scheduleWrap .domainTitle,
   .scheduleWrap .list:nth-of-type(2){
     display:none !important;
   }
 
-  /* Next course: sadece ilk kart kalsın */
   .scheduleWrap .list:first-of-type .scheduleCard:nth-child(n+2){
     display:none !important;
   }
 
-  /* Kart layout: kompakt + figma’ya yakın */
   .scheduleWrap{ padding: 0; }
 
   .scheduleCard{
@@ -142,7 +130,7 @@
       "date time";
     padding: 12px;
     column-gap: 10px;
-    row-gap: 8px;           /* önemli: kartı kısaltır */
+    row-gap: 8px;
     align-items: start;
   }
 
@@ -181,7 +169,6 @@
     color:#111827;
   }
 
-  /* sağ üst 2h */
   .duration{
     position: absolute;
     right: 14px;
@@ -192,9 +179,7 @@
   }
 }
 
-/* ===== EXTRA SMALL (<=360px) - Mobile S / 320px ===== */
 @media (max-width: 360px){
-
   .scheduleCard{
     grid-template-columns: 70px 1fr;
     padding: 10px;
@@ -208,7 +193,7 @@
   }
 
   .course{
-    font-size: 16px;
+    font-size: 14px;
     margin-bottom: 5px;
   }
 
@@ -232,8 +217,7 @@
   .duration{
     right: 12px;
     top: 10px;
-    font-size: 13px;
-     font-size:11px;
+    font-size:11px;
     font-weight:600;
   }
 }

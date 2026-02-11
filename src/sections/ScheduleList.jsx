@@ -66,7 +66,7 @@ export default function ScheduleList() {
         ))}
       </div>
 
-      {/* Mobilde Domain bölümünü hiç basmıyoruz */}
+    
       {!isMobile && (
         <>
           <div className="domainTitle">Demain</div>
