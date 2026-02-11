@@ -4,7 +4,7 @@ This repository contains the **Phase 2** delivery of the Rennes School UI: the d
 
 ## Deliverables
 - **Public GitHub Repository:** https://github.com/burcusavci96/rennes-school-phase2
-- **Live Demo (Vercel):** rennes-school-phase2.vercel.app
+- **Live Demo (Vercel):** https://rennes-school-phase2.vercel.app
 
 > Phase 1 (HTML/CSS) repository and live demo are delivered separately.
 
