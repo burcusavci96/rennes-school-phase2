@@ -1,16 +1,54 @@
-# React + Vite
+# Rennes School — Phase 2 (React)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This repository contains the **Phase 2** delivery of the Rennes School UI: the dashboard and related pages rebuilt with **React**, based on the provided design mockups.
 
-Currently, two official plugins are available:
+## Deliverables
+- **Public GitHub Repository:** https://github.com/burcusavci96/rennes-school-phase2
+- **Live Demo (Vercel):** rennes-school-phase2.vercel.app
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+> Phase 1 (HTML/CSS) repository and live demo are delivered separately.
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Scope
+The project recreates the required screens and layout as a React application, including:
+- Responsive dashboard layout (mobile / tablet / desktop)
+- Navigation between pages (Dashboard / News / Schedule)
+- Dashboard sections: Events banners, Welcome card, Schedule list
+- Schedule views (Day / Week / Month) with responsive behavior
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Tech Stack
+- React
+- Vite
+- React Router
+- CSS (custom styles)
+
+---
+
+## Getting Started
+
+### Prerequisites
+- Node.js (LTS recommended)
+- npm
+
+### Install dependencies
+```bash
+npm install
+
+Project Structure (overview)
+	•	src/components/ — reusable UI components (layout, schedule, news, etc.)
+	•	src/sections/ — dashboard sections (events panel, welcome card, schedule list)
+	•	src/data/ — mock data sources (events, schedule, etc.)
+	•	src/styles/ — global and page-level styles
+
+⸻
+
+
+Notes
+	•	The UI is implemented according to the provided design mockups.
+	•	Required assets are included in the repository.
+	•	Schedule data is mocked under src/data/ and can be replaced with an API integration.
+
+    Author - Burcu Savcı
